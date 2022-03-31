@@ -1,0 +1,46 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 03-02-2022-16-48-create-table-shop
+      author: Alexander Dedov
+      changes:
+        - createTable:
+            tableName: shop
+            columns:
+              - column: { name: id, type: bigint }
+              - column: { name: name, type: varchar }
+              - column: { name: address, type: varchar }
+      rollback:
+        - dropTable:
+            - tableName: shop
+
+  - changeSet:
+      id: 03-02-2022-16-58-create-shop-constraints
+      author: Alexander Dedov
+      changes:
+        - addNotNullConstraint:
+            tableName: shop
+            columnName: id
+            columnDataType: bigint
+        - addNotNullConstraint:
+            tableName: shop
+            columnName: name
+            columnDataType: varchar
+        - addNotNullConstraint:
+            tableName: shop
+            columnName: address
+            columnDataType: varchar
+        - addPrimaryKey:
+            columnNames: id
+            tableName: shop
+
+  - changeSet:
+      id: 08-02-2022-18-43-create-fk_shop
+      author: Alexander Dedov
+      changes:
+        - addForeighKeyConstraint:
+            constraintName: fk_shop_item_id
+            baseTableName: shop
+            baseColumnNames: id
+            referencedTableName: item
+            referencedColumnNames: shop_id

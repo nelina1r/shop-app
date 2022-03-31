@@ -1,0 +1,60 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 03-02-2022-17-20-create-table-waybill
+      author: Alexander Dedov
+      changes:
+        - createTable:
+            tableName: waybill
+            columns:
+              - column: { name: id, type: bigint }
+              - column: { name: item_id, type: bigint }
+              - column: { name: name, type: varchar }
+              - column: { name: price, type: bigint }
+              - column: { name: quantity, type: bigint }
+              - column: { name: shop_name, type: varchar }
+      rollback:
+        - dropTable:
+            - tableName: waybill
+
+  - changeSet:
+      id: 03-02-2022-17-23-create-waybill-constraints
+      author: Alexander Dedov
+      changes:
+        - addNotNullConstraint:
+            tableName: waybill
+            columnName: id
+            columnDataType: bigint
+        - addNotNullConstraint:
+            tableName: waybill
+            columnName: item_id
+            columnDataType: bigint
+        - addNotNullConstraint:
+            tableName: waybill
+            columnName: name
+            columnDataType: varchar
+        - addNotNullConstraint:
+            tableName: waybill
+            columnName: price
+            columnDataType: bigint
+        - addNotNullConstraint:
+            tableName: waybill
+            columnName: quantity
+            columnDataType: bigint
+        - addNotNullConstraint:
+            tableName: waybill
+            columnName: shop_name
+            columnDataType: varchar
+        - addPrimaryKey:
+            columnNames: id
+            tableName: waybill
+  - changeSet:
+      id: 08-02-2022-18-48-create-fk_waybill
+      author: Alexander Dedov
+      changes:
+        - addForeighKeyConstraint:
+            constraintName: fk_waybill_item_id
+            baseTableName: waybill
+            baseColumnNames: item_id
+            referencedTableName: item
+            referencedColumnNames: id

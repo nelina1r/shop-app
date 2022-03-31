@@ -1,0 +1,55 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 03-02-2022-16-32-create-table-item
+      author: Alexander Dedov
+      changes:
+        - createTable:
+            tableName: item
+            columns:
+              - column: { name: id, type: bigint }
+              - column: { name: name, type: varchar }
+              - column: { name: price, type: bigint }
+              - column: { name: quantity, type: bigint }
+              - column: { name: category, type: varchar }
+              - column: { name: shop_name, type: varchar }
+              - column: { name: status, type: varchar }
+      rollback:
+        - dropTable:
+            - tableName: item
+
+  - changeSet:
+      id: 03-02-2022-16-41-create-item-constraints
+      author: Alexander Dedov
+      changes:
+        - addNotNullConstraint:
+              tableName: item
+              columnName: id
+              columnDataType: bigint
+        - addNotNullConstraint:
+            tableName: item
+            columnName: name
+            columnDataType: varchar
+        - addNotNullConstraint:
+            tableName: item
+            columnName: price
+            columnDataType: bigint
+        - addNotNullConstraint:
+            tableName: item
+            columnName: quantity
+            columnDataType: bigint
+        - addNotNullConstraint:
+            tableName: item
+            columnName: category
+            columnDataType: varchar
+        - addNotNullConstraint:
+            tableName: item
+            columnName: shop_name
+            columnDataType: varchar
+        - addNotNullConstraint:
+            tableName: item
+            columnName: status
+            columnDataType: varchar
+        - addPrimaryKey:
+            columnNames: id
+            tableName: item
