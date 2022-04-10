@@ -2,6 +2,7 @@ package practicum.security.jwt;
 
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,9 +24,11 @@ import java.util.List;
 @Component
 public class JwtTokenProvider {
 
-    private String secret = "jwtFSEvgSvfsevGe43ybt7gupbhxfFDgvsbjnidt21rt7kkfhjreryhx";
+    @Value("${jwt-token.secret-key}")
+    private String secret;
 
-    private Long validateInMilliseconds = 3600000L;
+    @Value("${jwt-token.durability}")
+    private Long validateInMilliseconds;
 
     @Autowired
     private UserDetailsService userDetailsService;

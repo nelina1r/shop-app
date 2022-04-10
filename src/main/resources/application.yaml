@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/test
     username: postgres
-    password: 1111
+    password: postgres
   jpa:
     generate-ddl: true
     show-sql: true
@@ -17,3 +17,7 @@ spring:
     enabled: true
     change-log:
       classpath: db/changelog/db.changelog-master.yaml
+
+jwt-token:
+  secret-key: jwtFSEvgSvfsevGe43ybt7gupbhxfFDgvsbjnidt21rt7kkfhjreryhx
+  durability: 3600000
