@@ -36,21 +36,12 @@ public class AuthenticationController {
     @PostMapping(Urls.Auth.Login.FULL)
     public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto){
         try {
-            String username = requestDto.getUsername();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
-            User user = userService.findByUsername(username);
-
-            if (user == null) {
-                throw new UsernameNotFoundException("User with username: " + username + " not found");
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestDto.getUsername(), requestDto.getPassword()));
+            if (userService.findByUsername(requestDto.getUsername()) == null) {
+                throw new UsernameNotFoundException("User with username: " + requestDto.getUsername() + " not found");
             }
-
-            String token = jwtTokenProvider.createToken(username);
-
-            Map<Object, Object> response = new HashMap<>();
-            response.put("username", username);
-            response.put("token", token);
-
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(Map.of("username", requestDto.getUsername(),
+                                            "token", jwtTokenProvider.createToken(requestDto.getUsername())));
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username or password");
         }
