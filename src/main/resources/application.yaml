@@ -14,9 +14,8 @@ spring:
           lob:
             non_contextual_creation: true
   liquibase:
+    change-log: db/changelog/db.changelog-master.yaml
     enabled: true
-    change-log:
-      classpath: db/changelog/db.changelog-master.yaml
 
 jwt-token:
   secret-key: jwtFSEvgSvfsevGe43ybt7gupbhxfFDgvsbjnidt21rt7kkfhjreryhx
