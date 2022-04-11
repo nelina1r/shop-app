@@ -70,12 +70,12 @@ The token must be passed in the "Bearer_<token>" format to Headers -> Authorizat
 
 Also, you can change token lifetime (durability) in `application.yaml`file, default value == 3600000 mills == 1 hour.
 ## Api Reference - in progress
-
+### For Items
 #### Add new item
 
 `POST /api/item/`
 
-Body:
+Body (example):
 ```bash
 {
   "name": "name",
@@ -114,4 +114,103 @@ Response (example):
     "status": "BOUGHT"
   }
 }
+```
+#### Get item by Id
+
+`GET /api/item/{id}`
+
+Response (example):
+```bash
+{
+  "name": "name",
+  "price": 300000,
+  "quantity": 10,
+  "category": "IT",
+  "shopname": "shop_name",
+  "status": "ONSTORAGE"
+}
+```
+#### Delete item by Id
+
+`DELETE /api/item/{id}`
+
+Response:
+```bash
+deleted
+```
+#### Buy item by Id
+
+`POST /api/item/{id}`
+
+Response (example):
+```bash
+{
+  "name": "name",
+  "price": 300000,
+  "quantity": 10,
+  "category": "IT",
+  "shopname": "shop_name",
+  "status": "BOUGHT"
+}
+```
+#### Debite all items
+
+`POST /api/item/debite`
+
+Response (example):
+```bash
+debited
+```
+### For Shops
+
+#### Add new shop
+
+`POST /api/shop/`
+
+Body (example):
+```bash
+{
+  "name": "name",
+  "address": 300000
+}
+```
+Response :
+```bash
+added
+```
+#### Get all shops
+
+`GET /api/shop/`
+
+Response (example):
+```bash
+{
+  {
+  "name": "name",
+  "address": "Pushkin st. kolotushkin's house"
+  }
+  {
+  "name": "name2",
+  "address": "address2"
+  }
+}
+```
+#### Get shop by Id
+
+`GET /api/shop/{id}`
+
+Response (example):
+```bash
+{
+  "name": "name",
+  "address": "address"
+}
+```
+#### Delete shop by Id
+
+`DELETE /api/shop/{id}`
+
+Response:
+```bash
+deleted
 ```
