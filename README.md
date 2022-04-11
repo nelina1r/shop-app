@@ -69,7 +69,7 @@ Response:
 The token must be passed in the "Bearer_<token>" format to Headers -> Authorization.
 
 Also, you can change token lifetime (durability) in `application.yaml`file, default value == 3600000 mills == 1 hour.
-## Api Reference
+## Api Reference - in progress
 
 #### Add new item
 
