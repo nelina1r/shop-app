@@ -82,7 +82,7 @@ Body (example):
   "price": 300000,
   "quantity": 10,
   "category": "IT",
-  "shopname": "shop_name",
+  "shopName": "shop_name",
   "status": "ONSTORAGE"
 }
 ```
@@ -102,7 +102,7 @@ Response (example):
     "price": 300000,
     "quantity": 10,
     "category": "IT",
-    "shopname": "shop_name",
+    "shopName": "shop_name",
     "status": "ONSTORAGE"
   }
   {
@@ -110,7 +110,7 @@ Response (example):
     "price": 400000,
     "quantity": 15,
     "category": "IT",
-    "shopname": "shop_name2",
+    "shopName": "shop_name2",
     "status": "BOUGHT"
   }
 }
@@ -126,7 +126,7 @@ Response (example):
   "price": 300000,
   "quantity": 10,
   "category": "IT",
-  "shopname": "shop_name",
+  "shopName": "shop_name",
   "status": "ONSTORAGE"
 }
 ```
@@ -149,7 +149,7 @@ Response (example):
   "price": 300000,
   "quantity": 10,
   "category": "IT",
-  "shopname": "shop_name",
+  "shopName": "shop_name",
   "status": "BOUGHT"
 }
 ```
