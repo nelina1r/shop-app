@@ -13,7 +13,7 @@ This app emulates store's warehouse simple business logic (adding, searching, up
 
 The project uses Docker, so initially you have to build and run the image using docker-compose.
 
-Go to the 'docker' directory:
+Go to the `docker` directory:
 ```bash
   cd docker
 ```
