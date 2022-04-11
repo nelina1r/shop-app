@@ -16,7 +16,6 @@ import practicum.model.entity.User;
 import practicum.security.jwt.JwtTokenProvider;
 import practicum.service.interfaces.UserService;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -36,10 +35,10 @@ public class AuthenticationController {
     @PostMapping(Urls.Auth.Login.FULL)
     public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto){
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestDto.getUsername(), requestDto.getPassword()));
             if (userService.findByUsername(requestDto.getUsername()) == null) {
                 throw new UsernameNotFoundException("User with username: " + requestDto.getUsername() + " not found");
             }
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestDto.getUsername(), requestDto.getPassword()));
             return ResponseEntity.ok(Map.of("username", requestDto.getUsername(),
                                             "token", jwtTokenProvider.createToken(requestDto.getUsername())));
         } catch (AuthenticationException e) {
