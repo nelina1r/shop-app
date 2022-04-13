@@ -171,7 +171,7 @@ Body (example):
 ```bash
 {
   "name": "name",
-  "address": 300000
+  "address": "some_address"
 }
 ```
 Response :
